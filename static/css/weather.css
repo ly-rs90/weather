@@ -1,0 +1,55 @@
+.bg{
+    background: #eee;
+}
+.white-bg{
+    background: #fff;
+}
+.logo button{
+    border: none;
+}
+.logo button:hover, .logo button:focus, .logo button:active{
+    background: transparent !important;
+}
+.list .webix_selected{
+    background: #65abd6;
+}
+.forecast-t{
+    border-top: none;
+    border-bottom: none;
+}
+.table .webix_cell:focus{
+    outline: none;
+}
+.table .webix_ss_header{
+    background: none !important;
+}
+.table .webix_row_select{
+    background: #eee !important;
+    color: #0082d8 !important;
+}
+.table td{
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+}
+.table td > div{
+    text-align: center;
+    background: #fff;
+}
+.table .webix_column{
+    text-align: center;
+}
+.table .webix_column > div{
+    border-right: none;
+}
+.month-toolbar{
+    border-left: 1px solid #ccc;
+}
+.month-chart, .ten-chart{
+    border-top: none;
+}
+.chart > div{
+    background: #fff;
+}
+.btn-selected  button, .btn-selected  button:focus{
+    background: #05578e;
+}
