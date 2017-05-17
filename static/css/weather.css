@@ -42,7 +42,11 @@
     border-right: none;
 }
 .month-toolbar{
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #ddd;
+}
+.live-toolbar{
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .month-chart, .ten-chart{
     border-top: none;
@@ -52,4 +56,7 @@
 }
 .btn-selected  button, .btn-selected  button:focus{
     background: #05578e;
+}
+.template-bottom{
+    border-top: none;
 }
