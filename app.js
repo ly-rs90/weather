@@ -6,7 +6,7 @@ define(['libs/webix-jet-core/core'], function (core) {
         id: 'weather',
         name: '天气预报',
         debug: true,
-        start: '/weather/forecast',
+        start: '/weather/live',
         version: '1.0'
     });
 });
