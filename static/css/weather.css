@@ -60,3 +60,9 @@
 .template-bottom{
     border-top: none;
 }
+.template-left{
+    border-left: 1px solid #ddd !important;
+}
+.template-right{
+    border-right: 1px solid #ddd !important;
+}
