@@ -4,10 +4,9 @@
 define(['models/season_data'], function (d) {
     var ui = {
         rows: [
-            {view: 'template', template: '<span style="color:#333;font-size:20px">重要气象情况汇报</span>', autoheight: 1},
+            {view: 'template', template: '<div style="color:#333;font-size:20px">重要气象情况汇报</div>', autoheight: 1},
             {
                 view: 'template',
-                css: 'forecast-t',
                 autoheight: 1,
                 template: "<p>今日我市出梅</p>" +
                 "<p style='text-indent: 2em'>6月17日入梅以来，受江淮梅雨带影响，我市6月19日后期到28日出现了3次暴雨过程；" +

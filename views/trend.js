@@ -4,6 +4,7 @@
 define(function () {
     var ui = {
         rows: [
+            {view: 'template', template: '<div style="color:#333;font-size:20px">长期趋势预报</div>', autoheight: 1},
             {view: 'template', template: '长期趋势预报'}
         ]
     };

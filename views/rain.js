@@ -5,7 +5,8 @@ define(['models/rain_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
             {
-                template: "金华市各地降水概率预报&nbsp;&nbsp;<span style='font-size: 12px;color: #999'>金华气象台发布于&nbsp;#t#</span>",
+                view: 'template',
+                template: "<div style='color:#333;font-size:20px'>金华市各地降水概率预报&nbsp;&nbsp;<span style='font-size: 12px;color: #999'>金华气象台发布于&nbsp;#t#</span></div>",
                 autoheight: 1,
                 data: [{t: '2017/5/19 9:26:12'}]
             },

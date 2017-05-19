@@ -5,7 +5,8 @@ define(['models/overall_data'], function (d) {
     var ui = {
         rows: [
             {
-                view: 'template', template: '金华气象台&nbsp;#t#发布的生活指数预报',
+                view: 'template',
+                template: "<div style='color:#333;font-size:20px'>综合指数&nbsp;&nbsp;<span style='font-size: 12px;color: #999'>金华气象台&nbsp;#t#发布的生活指数预报</span></div>",
                 autoheight: 1,
                 data: [{t: '2017/5/19 10:10:21'}]
             },
