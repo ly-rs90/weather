@@ -280,6 +280,7 @@ define(['models/live_data', 'models/common'], function (d, c) {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            c.$selectItem('weather:list', 'live');
             webix.html.removeCss($$('live:btn2').getNode(), 'btn-selected');
             webix.html.removeCss($$('live:btn3').getNode(), 'btn-selected');
             webix.html.addCss($$('live:btn1').getNode(), 'btn-selected');

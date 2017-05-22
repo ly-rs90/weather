@@ -7,7 +7,11 @@ define(function () {
             e.setOption(o);
         }
     };
+    var selectItem = function (list_id, id) {
+        $$(list_id).select(id);
+    };
     return {
-        $drawChart: drawChart
+        $drawChart: drawChart,
+        $selectItem: selectItem
     };
 });

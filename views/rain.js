@@ -39,6 +39,7 @@ define(['models/rain_data', 'models/common'], function (d, c) {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            c.$selectItem('weather:list', 'rain');
             e = echarts.init($$('rain:chart').getNode());
             c.$drawChart(e, d.$option);
         },

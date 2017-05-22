@@ -100,6 +100,7 @@ define(['models/month_data', 'models/common'], function (d, c) {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            c.$selectItem('weather:list', 'month');
             webix.html.removeCss($$('month:btn2').getNode(), 'btn-selected');
             webix.html.removeCss($$('month:btn3').getNode(), 'btn-selected');
             webix.html.removeCss($$('month:btn4').getNode(), 'btn-selected');

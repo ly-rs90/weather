@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/5/17.
  */
-define(['models/week_data'], function (d) {
+define(['models/week_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
             {
@@ -27,6 +27,7 @@ define(['models/week_data'], function (d) {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            c.$selectItem('weather:list', 'week');
         }
     };
 });

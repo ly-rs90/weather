@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/5/17.
  */
-define(['models/season_data'], function (d) {
+define(['models/season_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
             {view: 'template', template: '<div style="color:#333;font-size:20px">重要气象情况汇报</div>', autoheight: 1},
@@ -56,6 +56,7 @@ define(['models/season_data'], function (d) {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            c.$selectItem('weather:list', 'season');
         }
     };
 });

@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/5/17.
  */
-define(['models/overall_data'], function (d) {
+define(['models/overall_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
             {
@@ -28,6 +28,7 @@ define(['models/overall_data'], function (d) {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            c.$selectItem('weather:list', 'overall');
         }
     };
 });
