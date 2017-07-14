@@ -13,7 +13,8 @@ define(['models/rain_data', 'models/common'], function (d, c) {
             {
                 view: 'datatable',
                 css: 'table',
-                scroll: 'y',
+                yCount: 3,
+                scroll: false,
                 autoheight: 1,
                 columns: [
                     {id: 1, header: '', adjust: 1},
