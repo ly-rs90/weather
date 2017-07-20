@@ -17,7 +17,6 @@ class Ten(RequestHandler):
             file_name = files.decode('gbk')
             if file_name.startswith('XUN'):
                 p = re.compile('\d+[a-c]')
-                t = '0'
                 v = re.findall(p, file_name)
                 temp = v[0]
                 if temp.endswith('a'):
