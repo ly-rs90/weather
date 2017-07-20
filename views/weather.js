@@ -35,7 +35,7 @@ define(function () {
                             //{id: 'forecast', icon: "sun-o", s: 'color: #ffc600', title: '天气预报'},
                             //{id: 'future', icon: "snowflake-o", s: 'color: #0056ee', title: '未来9天天气预报'},
                             {id: 'month', icon: "calendar", s: 'color: #e20000', title: '月预报'},
-                            //{id: 'ten', icon: "calendar-check-o", s: 'color: #ffc600', title: '旬预报'},
+                            {id: 'ten', icon: "calendar-check-o", s: 'color: #ffc600', title: '旬预报'},
                             {id: 'trend', icon: "line-chart", s: 'color: #0056ee', title: '长期趋势预报'},
                             {id: 'season', icon: "star", s: 'color: #e20000', title: '重要季节长期预报'},
                             {id: 'week', icon: "umbrella", s: 'color: #0056ee', title: '一周天气趋势'},

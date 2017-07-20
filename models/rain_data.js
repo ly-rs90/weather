@@ -38,23 +38,27 @@ define(function () {
                 name: '今天白天',
                 type: 'bar',
                 barMaxWidth: 30,
-                data: [0.9, 0.9, 1, 0.9, 0.9, 0.9, 0.9]
+                data: [0, 0, 0, 0, 0, 0, 0]
             },
             {
                 name: '今天夜里',
                 type: 'bar',
                 barMaxWidth: 30,
-                data: [0.7, 0.8, 0.7, 0.7, 0.7, 0.8, 0.8]
+                data: [0, 0, 0, 0, 0, 0, 0]
             },
             {
                 name: '24小时',
                 type: 'bar',
                 barMaxWidth: 30,
-                data: [0.97, 0.98, 1, 0.97, 0.97, 0.98, 0.98]
+                data: [0, 0, 0, 0, 0, 0, 0]
             }
         ]
     };
+    function getRain() {
+        return webix.ajax().post("/rain");
+    }
     return {
-        $option: option
+        $option: option,
+        $getRain: getRain
     };
 });

@@ -23,6 +23,9 @@
 .table .webix_ss_header{
     background: none !important;
 }
+.table .webix_ss_header table{
+    border-left: 1px solid #ddd !important;
+}
 .table .webix_row_select{
     background: #eee !important;
     color: #0082d8 !important;
@@ -65,4 +68,7 @@
 }
 .template-right{
     border-right: 1px solid #ddd !important;
+}
+.template-text .webix_template{
+    text-indent: 2em;
 }
