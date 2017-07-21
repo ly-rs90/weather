@@ -56,9 +56,21 @@ define(['models/month_data', 'models/common'], function (d, c) {
             c.$selectItem('weather:list', 'month');
             d.$getMonth().then(function (data) {
                 var temp = data.json();
-                if (temp.length === 1){
+                if (temp.length === 3){
                     $$('ten:header').define('data', [temp[0]]);
                     $$('ten:header').refresh();
+
+                    $$('month:t1').define('data', [{content: temp[1]['climate_point']}]);
+                    $$('month:t1').refresh();
+
+                    $$('month:t2').define('data', [{content: temp[1]['climate_summary']}]);
+                    $$('month:t2').refresh();
+
+                    $$('month:t3').define('data', [{content: temp[1]['trend']}]);
+                    $$('month:t3').refresh();
+
+                    $$('month:summary').add(temp[2]);
+                    $$('month:summary').refresh();
                 }
             });
         }
