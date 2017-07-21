@@ -5,93 +5,46 @@ define(['models/month_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
             {
-                view: 'datatable',
-                scroll: 'y',
-                id: 'month:t',
-                css: 'table',
-                select: 'row',
-                yCount: 7,
-                columns: [
-                    {id: 1, header: '日期', adjust: 1},
-                    {id: 2, header: '日平均温度(℃)', fillspace: 1},
-                    {id: 3, header: '日最高温度(℃)', fillspace: 1},
-                    {id: 4, header: '日最低温度(℃)', fillspace: 1},
-                    {id: 5, header: '降水量(mm)', fillspace: 1},
-                    {id: 6, header: '风力', fillspace: 1},
-                    {id: 7, header: '风向', fillspace: 1}
-                ],
-                data: d.$data
+                view: 'template', id: 'ten:header', height: 38,
+                template: "<div style='color:#333;font-size:20px'>#title#&nbsp;&nbsp;" +
+                "<span style='font-size: 12px;color: #999'>金华气象台发布于&nbsp;#time#</span></div>",
+                data: [{title: '金华气象月报', time: ''}]
             },
             {
-                css: 'white-bg month-toolbar',
-                cols: [
-                    {
-                        view: 'button', label: '平均温度', width: 80, id: 'month:btn1',
-                        click: function () {
-                            webix.html.removeCss($$('month:btn2').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn3').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn4').getNode(), 'btn-selected');
-                            webix.html.addCss(this.getNode(), 'btn-selected');
-                            c.$drawChart(e, d.$option1);
-                            var data = [];
-                            d.$data.forEach(function (item) {
-                                data.push([new Date(item[1]).getTime(), item[2]]);
-                            });
-                            c.$drawChart(e, {series: [{data: data}]});
+                view: 'scrollview', scroll: 'y', css: 'bg',
+                body: {
+                    rows: [
+                        {view: 'template', template: '具体要素预报', height: 32},
+                        {
+                            view: 'datatable', id: 'month:summary', css: 'table', scroll: false, yCount: 1,
+                            columns: [
+                                {id: 'rain_num', header: '月雨量', fillspace: 1},
+                                {id: 'rain_days', header: '月雨日', fillspace: 1},
+                                {id: 'avg_temp', header: '月平均气温度', fillspace: 1},
+                                {id: 'max_temp', header: '月极端最高温度', fillspace: 1}
+                            ],
+                            data: []
+                        },
+                        {height: 5},
+                        {view: 'template', template: '前期天气气候特点', height: 32},
+                        {
+                            view: 'template', id: 'month:t1', css: 'template-text', template: '#content#',
+                            height: 200, data: [{content: ''}]
+                        },
+                        {height: 5},
+                        {view: 'template', template: '气候概况', height: 32},
+                        {
+                            view: 'template', id: 'month:t2', css: 'template-text', template: '#content#',
+                            height: 200, data: [{content: ''}]
+                        },
+                        {height: 5},
+                        {view: 'template', template: '总趋势预测', height: 32},
+                        {
+                            view: 'template', id: 'month:t3', css: 'template-text', template: '#content#',
+                            height: 200, data: [{content: ''}]
                         }
-                    },
-                    {
-                        view: 'button', label: '最高温度', width: 80, id: 'month:btn2',
-                        click: function () {
-                            webix.html.removeCss($$('month:btn1').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn3').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn4').getNode(), 'btn-selected');
-                            webix.html.addCss(this.getNode(), 'btn-selected');
-                            c.$drawChart(e, d.$option2);
-                            var data = [];
-                            d.$data.forEach(function (item) {
-                                data.push([new Date(item[1]).getTime(), item[3]]);
-                            });
-                            c.$drawChart(e, { series: [{data: data}]});
-                        }
-                    },
-                    {
-                        view: 'button', label: '最低温度', width: 80, id: 'month:btn3',
-                        click: function () {
-                            webix.html.removeCss($$('month:btn1').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn2').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn4').getNode(), 'btn-selected');
-                            webix.html.addCss(this.getNode(), 'btn-selected');
-                            c.$drawChart(e, d.$option3);
-                            var data = [];
-                            d.$data.forEach(function (item) {
-                                data.push([new Date(item[1]).getTime(), item[4]]);
-                            });
-                            c.$drawChart(e, {series: [{data: data}]});
-                        }
-                    },
-                    {
-                        view: 'button', label: '降水量', width: 80, id: 'month:btn4',
-                        click: function () {
-                            webix.html.removeCss($$('month:btn1').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn2').getNode(), 'btn-selected');
-                            webix.html.removeCss($$('month:btn3').getNode(), 'btn-selected');
-                            webix.html.addCss(this.getNode(), 'btn-selected');
-                            c.$drawChart(e, d.$option4);
-                            var data = [];
-                            d.$data.forEach(function (item) {
-                                data.push([new Date(item[1]).getTime(), item[5]]);
-                            });
-                            c.$drawChart(e, {series: [{data: data}]});
-                        }
-                    },
-                    {}
-                ]
-            },
-            {
-                view: 'template',
-                css: 'chart month-chart',
-                id: 'month:chart'
+                    ]
+                }
             }
         ]
     };
@@ -101,27 +54,13 @@ define(['models/month_data', 'models/common'], function (d, c) {
         $oninit: function (v) {
             v.adjust();
             c.$selectItem('weather:list', 'month');
-            webix.html.removeCss($$('month:btn2').getNode(), 'btn-selected');
-            webix.html.removeCss($$('month:btn3').getNode(), 'btn-selected');
-            webix.html.removeCss($$('month:btn4').getNode(), 'btn-selected');
-            webix.html.addCss($$('month:btn1').getNode(), 'btn-selected');
-            e = echarts.init($$('month:chart').getNode());
-            c.$drawChart(e, d.$option1);
-            var data = [];
-            d.$data.forEach(function (item) {
-                data.push([new Date(item[1]).getTime(), item[2]]);
+            d.$getMonth().then(function (data) {
+                var temp = data.json();
+                if (temp.length === 1){
+                    $$('ten:header').define('data', [temp[0]]);
+                    $$('ten:header').refresh();
+                }
             });
-            c.$drawChart(e, {series: [{data: data}]});
-            
-            $$('month:t').attachEvent('onBlur', function (v) {
-                this.unselectAll();
-            });
-        },
-        $ondestroy: function () {
-            if (e){
-                e.dispose();
-                e = undefined;
-            }
         }
     };
 });

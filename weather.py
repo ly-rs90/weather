@@ -6,6 +6,8 @@ from tornado.ioloop import IOLoop
 from tornado.options import define, options
 from server.handlers.rain import Rain
 from server.handlers.ten import Ten
+from server.handlers.week import Week
+from server.handlers.month import Month
 
 define('port', default=80, help='server run on the given port.', type=int)
 
@@ -17,6 +19,8 @@ class Weather(Application):
         handlers = [
             (r'/rain', Rain),
             (r'/ten', Ten),
+            (r'/week', Week),
+            (r'/month', Month),
             (r'/(.*)', StaticFileHandler, {'path': file_root, 'default_filename': 'index.html'})
         ]
         settings = dict(

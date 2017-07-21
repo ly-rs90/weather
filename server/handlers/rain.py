@@ -5,25 +5,14 @@ import re
 import json
 from tornado.web import RequestHandler
 from ..settings import DATA_PATH
+from ..tools import get_last_file
 
 
 class Rain(RequestHandler):
     def post(self, *args, **kwargs):
         data = []   # 待返回的数据
         # 查找最新降水概率文件
-        rain_file = ''
-        last_time = '0'
-        for files in os.listdir(DATA_PATH):
-            file_name = files.decode('gbk')
-            if file_name.startswith('pp'):
-                p = re.compile('\d+')
-                v = re.findall(p, file_name)
-                t = '0'
-                for item in v:
-                    t += item
-                if int(t) > int(last_time):
-                    last_time = t
-                    rain_file = file_name
+        rain_file = get_last_file('pp')
         if rain_file:
             line_num = 0
             pattern = re.compile('(\d+)%')
