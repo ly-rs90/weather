@@ -36,7 +36,7 @@ define(['models/week_data', 'models/common'], function (d, c) {
                                 "<img src='/static/images/rain2.png' style='max-width: 72px; max-height: 72px'>" +
                             "</div>";
                         }
-                        else if (obj.w === '雷雨'){
+                        else if (obj.w === '雷阵雨'){
                             p = "<div style='text-align: center'>" +
                                 "<img src='/static/images/rain3.png' style='max-width: 72px; max-height: 72px'>" +
                             "</div>";

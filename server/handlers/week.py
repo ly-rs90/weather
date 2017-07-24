@@ -55,6 +55,8 @@ class Week(RequestHandler):
                             w = u'小雨'
                         elif w.endswith(u'大雨'):
                             w = u'大雨'
+                        elif w.endswith(u'雷阵雨'):
+                            w = u'雷阵雨'
                         else:
                             w = u'小雨'
                     else:
