@@ -2,6 +2,9 @@
  * Created by lenovo on 2017/5/22.
  */
 define(function () {
+    function getTrend() {
+        return webix.ajax().post('/trend');
+    }
     var option1 = {
         title: {
             text: '金华市2015年汛期(5~9)月降水趋势预测',
@@ -144,6 +147,7 @@ define(function () {
     };
     return {
         $option1: option1,
-        $option2: option2
+        $option2: option2,
+        $getTrend: getTrend
     };
 });

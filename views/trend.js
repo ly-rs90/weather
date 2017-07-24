@@ -4,9 +4,16 @@
 define(['models/trend_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
-            {view: 'template', template: '<div style="color:#333;font-size:20px">长期趋势预报</div>', autoheight: 1},
-            {view: 'template', template: '', css: 'chart', id: 'trend:chart1'},
-            {view: 'template', template: '', css: 'chart', id: 'trend:chart2'}
+            {
+                view: 'template', id: 'trend:header', height: 38,
+                template: "<div style='color:#333;font-size:20px'>#title#&nbsp;&nbsp;" +
+                "<span style='font-size: 12px;color: #999'>&nbsp;#num#&nbsp;&nbsp;&nbsp;&nbsp;</span>" +
+                "<span style='font-size: 12px;color: #999'>金华气象台发布于&nbsp;#time#</span></div>",
+                data: [{title: '长期趋势预报', time: '', num: ''}]
+            },
+            {
+
+            }
         ]
     };
     var e1 = undefined;
@@ -16,20 +23,11 @@ define(['models/trend_data', 'models/common'], function (d, c) {
         $oninit: function (v) {
             v.adjust();
             c.$selectItem('weather:list', 'trend');
-            e1 = echarts.init($$('trend:chart1').getNode());
-            e2 = echarts.init($$('trend:chart2').getNode());
-            c.$drawChart(e1, d.$option1);
-            c.$drawChart(e2, d.$option2);
-        },
-        $ondestroy: function () {
-            if (e1){
-                e1.dispose();
-                e1 = undefined;
-            }
-            if (e2){
-                e2.dispose();
-                e2 = undefined;
-            }
+            d.$getTrend().then(function (data) {
+                var temp = data.json();
+                $$('trend:header').define('data', [temp[0]]);
+                $$('trend:header').refresh();
+            });
         }
     };
 });

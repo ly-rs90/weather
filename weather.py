@@ -9,6 +9,7 @@ from server.handlers.ten import Ten
 from server.handlers.week import Week
 from server.handlers.month import Month
 from server.handlers.future import Future
+from server.handlers.trend import Trend
 
 define('port', default=80, help='server run on the given port.', type=int)
 
@@ -23,6 +24,7 @@ class Weather(Application):
             (r'/week', Week),
             (r'/month', Month),
             (r'/future', Future),
+            (r'/trend', Trend),
             (r'/(.*)', StaticFileHandler, {'path': file_root, 'default_filename': 'index.html'})
         ]
         settings = dict(

@@ -12,7 +12,7 @@ define(['models/week_data', 'models/common'], function (d, c) {
             },
             {
                 view: 'template', height: 32, template: '#content#', css: 'template-text', id: 'week:t2',
-                data: [{content: '预计未来七天前期副高边缘，多午后雷阵雨，后期副高加强控制，晴热天气。'}]},
+                data: [{content: ''}]},
             {height: 5},
             {view: 'template', height: 32, template: '具体分日预报'},
             {
