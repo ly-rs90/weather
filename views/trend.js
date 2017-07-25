@@ -25,7 +25,7 @@ define(['models/trend_data', 'models/common'], function (d, c) {
                         {height: 5},
                         {
                             view: 'datatable', css: 'table', id: 'trend:table1', scroll: false,
-                            yCount: 6, footer: 1,
+                            autoheight: 1, footer: 1,
                             columns: [
                                 {id: '1', header: '', footer: {text: '', colspan: 9}, adjust: 1},
                                 {id: '2', header: '金华', fillspace: 1},
