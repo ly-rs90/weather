@@ -4,51 +4,53 @@
 define(['models/season_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
-            {view: 'template', template: '<div style="color:#333;font-size:20px">重要气象情况汇报</div>', autoheight: 1},
             {
-                view: 'template',
-                autoheight: 1,
-                template: "<p>今日我市出梅</p>" +
-                "<p style='text-indent: 2em'>6月17日入梅以来，受江淮梅雨带影响，我市6月19日后期到28日出现了3次暴雨过程；" +
-                "7月1~6日受梅雨带南缘影响，多阵雨或雷雨天气，其中2日、4日和5日部分地区出现短时强降水、强雷电" +
-                "和局地7~9级雷雨大风天气。</p>" +
-                "<p style='text-indent: 2em'>入梅以来，全市平均雨量412.6mm，出现500mm以上的站点有23个，最大武义金畈638.6mm，400mm以上" +
-                "的站点有103个，各县(市)雨量如下：</p>"
+                view: 'template', id: 'season:header', height: 38,
+                template: "<div style='color:#333;font-size:20px'>重要季节长期预报" +
+                "<span style='font-size: 12px;color: #999'>&nbsp;&nbsp;&nbsp;&nbsp;金华气象台发布于&nbsp;#time#</span></div>",
+                data: [{time: ''}]
             },
             {
-                cols: [
-                    {width: 50, css: 'template-left white-bg'},
-                    {
-                        view: 'datatable',
-                        scroll: false,
-                        autoheight: 1,
-                        footer: 1,
-                        css: 'table',
-                        columns: [
-                            {
-                                id: 1, header: '金华', fillspace: 1, footer:
-                                {text: '表1&nbsp;&nbsp;2014年6月16日至7月7日各县(市)降雨量(单位：mm)', colspan: 8}
-                            },
-                            {id: 2, header: '武义', fillspace: 1},
-                            {id: 3, header: '永康', fillspace: 1},
-                            {id: 4, header: '东阳', fillspace: 1},
-                            {id: 5, header: '兰溪', fillspace: 1},
-                            {id: 6, header: '义乌', fillspace: 1},
-                            {id: 7, header: '磐安', fillspace: 1},
-                            {id: 8, header: '浦江', fillspace: 1}
-                        ],
-                        data: d.$data
-
-                    },
-                    {width: 50, css: 'template-right white-bg'}
-                ]
-            },
-            {
-                view: 'template',
-                css: 'forecast-t',
-                template: "<p>今日我市出梅</p>" +
-                "<p style='text-indent: 2em'>根据最新气象资料分析，受大陆高压控制，预计未来" +
-                "3~5天我市以多云天气为主，无明显降水，午后局部有雷阵雨，最高温度将升至34~35℃。</p>"
+                view: 'scrollview', scroll: 'y', css: 'bg',
+                body: {
+                    rows: [
+                        {
+                            view: 'template', template: '#title#', id: 'season:title1', height: 32, data: [{title: ''}]
+                        },
+                        {
+                            view: 'template', id: 'season:t1', css: 'template-text', template: '#content#',
+                            height: 200, data: [{content: ''}]
+                        },
+                        {height: 5},
+                        {
+                            view: 'datatable', css: 'table', id: 'season:table', scroll: false,
+                            yCount: 3, footer: 1,
+                            columns: [
+                                {id: 'item', header: '', fillspace: 1, footer: {text: '', colspan: 9}},
+                                {id: 'jinhua', header: '金华', fillspace: 1},
+                                {id: 'lanxi', header: '兰溪', fillspace: 1},
+                                {id: 'dongyang', header: '东阳', fillspace: 1},
+                                {id: 'yiwu', header: '义乌', fillspace: 1},
+                                {id: 'wuyi', header: '武义', fillspace: 1},
+                                {id: 'yongkang', header: '永康', fillspace: 1},
+                                {id: 'pujiang', header: '浦江', fillspace: 1},
+                                {id: 'panan', header: '磐安', fillspace: 1}
+                            ],
+                            data: []
+                        },
+                        {
+                            view: 'label', autoheight: 1, css: 'white-bg', id: 'season:mark'
+                        },
+                        {height: 7},
+                        {
+                            view: 'template', template: '#title#', id: 'season:title2', height: 32, data: [{title: ''}]
+                        },
+                        {
+                            view: 'template', id: 'season:t2', css: 'template-text', template: '#content#',
+                            height: 200, data: [{content: ''}]
+                        }
+                    ]
+                }
             }
         ]
     };
@@ -57,6 +59,34 @@ define(['models/season_data', 'models/common'], function (d, c) {
         $oninit: function (v) {
             v.adjust();
             c.$selectItem('weather:list', 'season');
+            d.$getSeason().then(function (data) {
+                var temp = data.json();
+                if (temp.length === 8){
+                    $$('season:header').define('data', [temp[0]]);
+                    $$('season:header').refresh();
+                    for (var i = 1; i < 4; i++){
+                        $$('season:table').add(temp[i]);
+                    }
+                    $$('season:table').refresh();
+                    $$('season:table').config.columns[0]['footer'] = [{text: temp[4]['footer'], colspan: 9}];
+                    $$('season:table').refreshColumns();
+
+                    $$('season:mark').define('label', "<div style='text-align: center'>" + temp[5]['mark'] + "</div>");
+                    $$('season:mark').refresh();
+
+                    var t1 = temp[6];
+                    $$('season:title1').define('data', [{title: t1['title1']}]);
+                    $$('season:title1').refresh();
+                    $$('season:t1').define('data', [{content: t1['section1']}]);
+                    $$('season:t1').refresh();
+
+                    var t2 = temp[7];
+                    $$('season:title2').define('data', [{title: t2['title2']}]);
+                    $$('season:title2').refresh();
+                    $$('season:t2').define('data', [{content: t2['section2']}]);
+                    $$('season:t2').refresh();
+                }
+            });
         }
     };
 });
