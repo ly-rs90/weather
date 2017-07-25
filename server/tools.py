@@ -18,6 +18,6 @@ def get_last_file(prefix):
             for n in v:
                 temp += n
             if int(temp) > int(last_time):
-                last_time = v[0]
+                last_time = temp
                 file_name = file_temp_name
     return file_name
