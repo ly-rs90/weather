@@ -2,6 +2,23 @@
  * Created by lenovo on 2017/5/17.
  */
 define(function () {
+    var warn = webix.ui({
+        view: 'window', id: 'down', head: '提示信息', width: 200, height: 200, modal: 1, position: 'center',
+        body: {
+            rows: [
+                {
+                    view: 'template',
+                    template: "请先安装<a href='/installers/GoogleChromeframeStandaloneEnterprise.msi'>插件</a>"
+                },
+                {
+                    view: 'button', label: '确定', align: 'center',
+                    click: function () {
+                        $$('down').hide();
+                    }
+                }
+            ]
+        }
+    });
     var ui = {
         css: 'bg',
         rows: [
@@ -60,6 +77,12 @@ define(function () {
         $ui: ui,
         $oninit: function (v) {
             v.adjust();
+            var link = $$('weather:download');
+            var user = navigator.userAgent;
+            var index = user.indexOf('MSIE');
+            if (index != -1){
+                warn.show();
+            }
         }
     };
 });

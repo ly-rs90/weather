@@ -10,6 +10,14 @@
 .logo button:hover, .logo button:focus, .logo button:active{
     background: transparent !important;
 }
+.link > div{
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.link > div:hover{
+    color: #cc3b0a
+}
 .list .webix_selected{
     background: #65abd6;
 }
