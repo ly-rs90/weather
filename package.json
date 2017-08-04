@@ -1,0 +1,28 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "金华市天气预报",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ly-rs90/weather.git"
+  },
+  "author": "ly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ly-rs90/weather/issues"
+  },
+  "homepage": "https://github.com/ly-rs90/weather#readme",
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^0.6.1",
+    "gulp-requirejs": "^1.0.0-rc2",
+    "gulp-uglify": "^3.0.0"
+  }
+}
