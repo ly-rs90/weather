@@ -12,8 +12,23 @@ define(['models/week_data', 'models/common'], function (d, c) {
             },
             {
                 view: 'template', height: 32, template: '#content#', css: 'template-text', id: 'week:t2',
-                data: [{content: ''}]},
-            {height: 5},
+                data: [{content: ''}]
+            },
+            {
+                view: 'segmented', id: 'week:seg', value: 'jinhua',
+                options: [
+                    {id: 'jinhua', value: '金华'},
+                    {id: 'yiwu', value: '义乌市'},
+                    {id: 'dongyang', value: '东阳市'},
+                    {id: 'yongkang', value: '永康市'},
+                    {id: 'lanxi', value: '兰溪市'},
+                    {id: 'wuyi', value: '武义县'},
+                    {id: 'pujinag', value: '浦江县'},
+                    {id: 'panan', value: '磐安县'},
+                    {id: 'wucheng', value: '婺城区'},
+                    {id: 'jindong', value: '金东区'}
+                ]
+            },
             {view: 'template', height: 32, template: '具体分日预报'},
             {
                 view: 'dataview', id: 'week:dataview', xCount: 3,

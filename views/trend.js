@@ -29,12 +29,12 @@ define(['models/trend_data', 'models/common'], function (d, c) {
                             columns: [
                                 {id: '1', header: '', footer: {text: '', colspan: 9}, adjust: 1},
                                 {id: '2', header: '金华', fillspace: 1},
-                                {id: '3', header: '浦江', fillspace: 1},
-                                {id: '4', header: '兰溪', fillspace: 1},
                                 {id: '5', header: '义乌', fillspace: 1},
                                 {id: '6', header: '东阳', fillspace: 1},
-                                {id: '7', header: '武义', fillspace: 1},
                                 {id: '8', header: '永康', fillspace: 1},
+                                {id: '4', header: '兰溪', fillspace: 1},
+                                {id: '7', header: '武义', fillspace: 1},
+                                {id: '3', header: '浦江', fillspace: 1},
                                 {id: '9', header: '磐安', fillspace: 1}
                             ],
                             data: []

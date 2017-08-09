@@ -4,274 +4,77 @@
 define(['models/live_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
+            {height: 5},
             {
+                height: 260,
                 cols: [
                     {
-                        gravity: 1.5,
-                        rows: [
-                            {
-                                template: "<div>#t#</div>", css: 'forecast-t',
-                                data: [{t: '5月19日 星期五'}], autoheight: 1
-                            },
-                            {
-                                template: function (obj) {
-                                    var v = obj.v;
-                                    if (v <= 50){
-                                        return "<div>实时空气质量：<span style='background: #1ecc13;color:#fff'>"+v+"&nbsp;优</span></div>";
-                                    }else if (v > 50 && v <= 100){
-                                        return "<div>实时空气质量：<span style='background: #77cc03;color:#fff'>"+v+"&nbsp;良好</span></div>";
-                                    }else if (v > 100 && v <= 200){
-                                        return "<div>实时空气质量：<span style='background: #e1c803;color:#fff'>"+v+"&nbsp;轻度污染</span></div>";
-                                    }else{
-                                        return "<div>实时空气质量：<span style='background: #cc290b;color:#fff'>"+v+"&nbsp;重度污染</span></div>";
-                                    }
-                                },
-                                css: 'forecast-t',
-                                data: [{v: 202}], autoheight: 1
-                            },
-                            {
-                                css: 'forecast-t',
-                                height: 80,
-                                template: "<div style='text-align: center'><img src='#pic#' style='max-height: 72px;max-width: 72px'></div>",
-                                data: [{pic: '/static/images/sun3.png'}]
-                            },
-                            {
-                                template: "<div style='height: 60px'>" +
-                                "<div style='width:50%;float:left;font-size:45px;text-align:right;color:#0080dc'>#v#</div>" +
-                                "<div style='width:50%;float:left'>" +
-                                "<div style='font-size:16px;margin-top:8px'>℃</div>" +
-                                "<div style='font-size:14px'>#v1#</div>" +
-                                "</div>" +
-                                "</div>",
-                                css: 'forecast-t',
-                                autoheight: 1,
-                                data: [{v: 28, v1: '晴(实时)'}]
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '20~31℃'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '晴转阵雨'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '南风微风'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {view: 'template', template: '', css: 'template-bottom', autoheight: 1}
+                        id: 'live:weather',
+                        width: 350,
+                        view: 'template',
+                        template: function (obj) {
+                            var div_time = "<div style='font-size:12px;height:40px;line-height:40px'>" + obj.time + "&nbsp;天气实况</div>";
+                            var div_temp = "<div style='height:100px'>" +
+                                    "<div style='line-height:100px;font-size:100px;color:#dc5d09;width:49%;text-align:right;float:left' class='webix_icon fa-thermometer-2'>" +
+                                    "</div>" +
+                                    "<div style='width:49%;height:100px;float:right;margin-left:2%;font-size:50px;line-height:124px;color:#3189cc'>" +
+                                        obj.temp + "<sup style='font-size:20px'>℃</sup><sub style='font-size:17px;margin-left:-16px;position:absolute;margin-top:17px'>晴</sub>" +
+                                    "</div>" +
+                                "</div>";
+
+                            var div_water_wind = "<div style='height:50px'>" +
+                                    "<div style='width:50%;float:left;text-align:center;line-height:50px'>" +
+                                        "<span class='webix_icon fa-tint' style='color:#2064cc'></span> 相对湿度：" + obj.water +
+                                    "</div>" +
+                                    "<div style='width:50%;float:right;text-align:center;line-height:50px'>" +
+                                        "<span class='webix_icon fa-compass' style='color:#ccc912'></span>" + obj.wind +
+                                    "</div>" +
+                                "</div>";
+
+                            var div_air_pm = "<div style='height:50px'>" +
+                                    "<div style='width:50%;float:left;text-align:center;line-height:50px'>" +
+                                        "<span class='webix_icon fa-star' style='color:#2acc0e'></span> 空气质量：" + obj.air +
+                                    "</div>" +
+                                    "<div style='width:50%;float:right;text-align:center;line-height:50px'>" +
+                                        "<span class='webix_icon fa-warning' style='color:#cc2606'></span>PM：" + obj.pm +
+                                    "</div>" +
+                                "</div>";
+
+                            return div_time + div_temp + div_water_wind + div_air_pm;
+                        },
+                        data: [
+                            {time: '14:25', temp: 33, water: '53%', wind: '南风 0.2m/s', air: '65良', pm: 4.2}
                         ]
                     },
-                    {
-                        rows: [
-                            {
-                                template: "<div style='text-align: center'>" +
-                                "<div>#v1#</div>" +
-                                "<div style='color: #999'>#v2#</div>" +
-                                "</div>",
-                                css: 'forecast-t',
-                                data: [{v1: '周六', v2: '5月20日'}],
-                                autoheight: 1
-                            },
-                            {view: 'template', template: '', css: 'forecast-t', height: 38},
-                            {
-                                css: 'forecast-t',
-                                height: 80,
-                                template: "<div style='text-align: center'><img src='#pic#' style='max-height: 72px;max-width: 72px'></div>",
-                                data: [{pic: '/static/images/cloud1.png'}]
-                            },
-                            {view: 'template', template: '', css: 'forecast-t'},
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '20~28℃'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '多云转小雨'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '南风微风'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {view: 'template', template: '', css: 'template-bottom', autoheight: 1}
-                        ]
-                    },
-                    {
-                        rows: [
-                            {
-                                template: "<div style='text-align: center'>" +
-                                "<div>#v1#</div>" +
-                                "<div style='color: #999'>#v2#</div>" +
-                                "</div>",
-                                css: 'forecast-t',
-                                data: [{v1: '周日', v2: '5月21日'}],
-                                autoheight: 1
-                            },
-                            {view: 'template', template: '', css: 'forecast-t', height: 38},
-                            {
-                                css: 'forecast-t',
-                                height: 80,
-                                template: "<div style='text-align: center'><img src='#pic#' style='max-height: 72px;max-width: 72px'></div>",
-                                data: [{pic: '/static/images/rain1.png'}]
-                            },
-                            {view: 'template', template: '', css: 'forecast-t'},
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '19~23℃'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '小雨'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '北风微风'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {view: 'template', template: '', css: 'template-bottom', autoheight: 1}
-                        ]
-                    },
-                    {
-                        rows: [
-                            {
-                                template: "<div style='text-align: center'>" +
-                                    "<div>#v1#</div>" +
-                                    "<div style='color: #999'>#v2#</div>" +
-                                "</div>",
-                                css: 'forecast-t',
-                                data: [{v1: '周一', v2: '5月22日'}],
-                                autoheight: 1
-                            },
-                            {view: 'template', template: '', css: 'forecast-t', height: 38},
-                            {
-                                css: 'forecast-t',
-                                height: 80,
-                                template: "<div style='text-align: center'><img src='#pic#' style='max-height: 72px;max-width: 72px'></div>",
-                                data: [{pic: '/static/images/rain1.png'}]
-                            },
-                            {view: 'template', template: '', css: 'forecast-t'},
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '18~28℃'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '小雨'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '微风'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {view: 'template', template: '', css: 'template-bottom', autoheight: 1}
-                        ]
-                    },
-                    {
-                        rows: [
-                            {
-                                template: "<div style='text-align: center'>" +
-                                    "<div>#v1#</div>" +
-                                    "<div style='color: #999'>#v2#</div>" +
-                                "</div>",
-                                css: 'forecast-t',
-                                data: [{v1: '周二', v2: '5月23日'}],
-                                autoheight: 1
-                            },
-                            {view: 'template', template: '', css: 'forecast-t', height: 38},
-                            {
-                                css: 'forecast-t',
-                                height: 80,
-                                template: "<div style='text-align: center'><img src='#pic#' style='max-height: 72px;max-width: 72px'></div>",
-                                data: [{pic: '/static/images/rain1.png'}]
-                            },
-                            {view: 'template', template: '', css: 'forecast-t'},
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '19~27℃'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '小雨转多云'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {
-                                template: "<div style='text-align: center'>#v#</div>",
-                                data: [{v: '微风'}],
-                                autoheight: 1,
-                                css: 'forecast-t'
-                            },
-                            {view: 'template', template: '', css: 'template-bottom', autoheight: 1}
-                        ]
-                    }
+                    {width: 5},
+                    {template: '今日天气概况:<p>今日天气以高温为主。</p>'},
+                    {width: 5},
+                    {template: '注意事项:<p>不宜外出，以防中暑。</p>'}
                 ]
             },
+            {height: 5},
             {
-                rows: [
-                    {
-                        css: 'white-bg live-toolbar',
-                        cols: [
-                            {
-                                view: 'button', label: '24小时温度', width: 100, id: 'live:btn1',
-                                click: function () {
-                                    webix.html.removeCss($$('live:btn2').getNode(), 'btn-selected');
-                                    webix.html.removeCss($$('live:btn3').getNode(), 'btn-selected');
-                                    webix.html.addCss(this.getNode(), 'btn-selected');
-                                    c.$drawChart(e, d.$option1);
-                                }
-                            },
-                            {
-                                view: 'button', label: '风力', width: 100, id: 'live:btn2',
-                                click: function () {
-                                    webix.html.removeCss($$('live:btn1').getNode(), 'btn-selected');
-                                    webix.html.removeCss($$('live:btn3').getNode(), 'btn-selected');
-                                    webix.html.addCss(this.getNode(), 'btn-selected');
-                                    c.$drawChart(e, d.$option2);
-                                }
-                            },
-                            {
-                                view: 'button', label: '降水量', width: 100, id: 'live:btn3',
-                                click: function () {
-                                    webix.html.removeCss($$('live:btn1').getNode(), 'btn-selected');
-                                    webix.html.removeCss($$('live:btn2').getNode(), 'btn-selected');
-                                    webix.html.addCss(this.getNode(), 'btn-selected');
-                                    c.$drawChart(e, d.$option3);
-                                }
-                            },
-                            {}
-                        ]
-                    },
-                    {
-                        view: 'template',
-                        id: 'live:chart',
-                        css: 'chart forecast-t',
-                        template: ''
+                view: 'segmented', id: 'live:seg', value: 'temp', inputWidth: 300, css: 'white-bg live_seg',
+                options: [
+                    {id: 'temp', value: '温度'},
+                    {id: 'wind', value: '风速'},
+                    {id: 'pm', value: 'PM值'}
+                ],
+                on: {
+                    'onAfterTabClick': function (id) {
+                        if ('temp' === id){
+                            c.$drawChart(e, d.$option_temp);
+                        }else if ('wind' === id){
+                            c.$drawChart(e, d.$option_wind);
+                        }else{
+                            c.$drawChart(e, d.$option_pm);
+                        }
                     }
-                ]
+                }
+            },
+            {
+                // 图
+                view: 'template', template: '', css: 'template_no_top', id: 'live:chart'
             }
         ]
     };
@@ -281,12 +84,9 @@ define(['models/live_data', 'models/common'], function (d, c) {
         $oninit: function (v) {
             v.adjust();
             c.$selectItem('weather:list', 'live');
-            webix.html.removeCss($$('live:btn2').getNode(), 'btn-selected');
-            webix.html.removeCss($$('live:btn3').getNode(), 'btn-selected');
-            webix.html.addCss($$('live:btn1').getNode(), 'btn-selected');
 
             e = echarts.init($$('live:chart').getNode());
-            c.$drawChart(e, d.$option1);
+            c.$drawChart(e, d.$option_temp);
         },
         $ondestroy: function () {
             if (e){

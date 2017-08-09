@@ -2,12 +2,13 @@
  * Created by lenovo on 2017/5/19.
  */
 define(function () {
-    var option1 = {
+    var option_temp = {
         title: {
-            text: '24小时温度',
+            text: '温度',
             left: 'center'
         },
         tooltip: {trigger: 'axis'},
+        backgroundColor: '#fff',
         grid: {
             x: 35,
             x2: 45,
@@ -15,22 +16,32 @@ define(function () {
         },
         xAxis: {
             name: '时间',
-            data: ['现在', '12点', '14点', '16点', '18点', '20点', '22点', '0点', '2点', '4点', '6点', '8点']
+            data: ['0点', '2点', '4点', '6点', '8点', '10点', '12点', '14点', '16点', '18点', '20点', '22点', '24点']
         },
         yAxis: {
             name: '摄氏度(℃)'
         },
         series: [
             {
+                // label: {
+                //     normal: {
+                //         show: true,
+                //         position: 'top',
+                //         formatter: '{c}℃',
+                //         textStyle: {
+                //             color: '#666'
+                //         }
+                //     }
+                // },
                 type: 'line',
                 name: '温度',
-                data: [21, 20, 24, 26, 23, 22, 27, 20, 19, 22, 23, 24]
+                data: [21, 20, 24, 26, 23, 22, 27, 20, 19, 22, 23, 24, 21]
             }
         ]
     };
-    var option2 = {
+    var option_wind = {
         title: {
-            text: '风力',
+            text: '风速',
             left: 'center'
         },
         tooltip: {trigger: 'axis'},
@@ -41,22 +52,32 @@ define(function () {
         },
         xAxis: {
             name: '时间',
-            data: ['现在', '12点', '14点', '16点', '18点', '20点', '22点', '0点', '2点', '4点', '6点', '8点']
+            data: ['0点', '2点', '4点', '6点', '8点', '10点', '12点', '14点', '16点', '18点', '20点', '22点', '24点']
         },
         yAxis: {
-            name: '风力(级)'
+            name: '风速(m/s)'
         },
         series: [
             {
+                // label: {
+                //     normal: {
+                //         show: true,
+                //         position: 'top',
+                //         formatter: '{c}m/s',
+                //         textStyle: {
+                //             color: '#666'
+                //         }
+                //     }
+                // },
                 type: 'line',
-                name: '风力',
-                data: [0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 0, 0]
+                name: '风速',
+                data: [0.4, 0.6, 1, 0.2, 2.1, 0.9, 0.7, 0.2, 3.2, 0.8, 0.5, 0.1, 0.4]
             }
         ]
     };
-    var option3 = {
+    var option_pm = {
         title: {
-            text: '降水量',
+            text: 'PM值',
             left: 'center'
         },
         tooltip: {trigger: 'axis'},
@@ -67,22 +88,32 @@ define(function () {
         },
         xAxis: {
             name: '时间',
-            data: ['现在', '12点', '14点', '16点', '18点', '20点', '22点', '0点', '2点', '4点', '6点', '8点']
+            data: ['0点', '2点', '4点', '6点', '8点', '10点', '12点', '14点', '16点', '18点', '20点', '22点', '24点']
         },
         yAxis: {
-            name: '降水量(mm)'
+            name: 'PM(ug/m³)'
         },
         series: [
             {
+                // label: {
+                //     normal: {
+                //         show: true,
+                //         position: 'top',
+                //         formatter: '{c}ug/m³',
+                //         textStyle: {
+                //             color: '#666'
+                //         }
+                //     }
+                // },
                 type: 'line',
-                name: '降水量',
-                data: [0, 0, 0, 2, 0, 0.3, 0, 12, 0, 0, 0, 2]
+                name: 'PM值',
+                data: [12, 20, 10, 28, 20, 45, 100, 12, 80, 10, 40, 29, 34]
             }
         ]
     };
     return {
-        $option1: option1,
-        $option2: option2,
-        $option3: option3
+        $option_temp: option_temp,
+        $option_wind: option_wind,
+        $option_pm: option_pm
     };
 });

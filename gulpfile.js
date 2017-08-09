@@ -46,6 +46,8 @@ gulp.task('build_html', function () {
 gulp.task('build_libs', function () {
     gulp.src('libs/echarts/dist/echarts.min.js')
         .pipe(gulp.dest('./deploy/libs/echarts'));
+    gulp.src('libs/echarts/map/js/jinhua.js')
+        .pipe(gulp.dest('./deploy/libs/echarts/map/js'));
     gulp.src('libs/webix/**/*.*')
         .pipe(gulp.dest('./deploy/libs/webix'));
 });

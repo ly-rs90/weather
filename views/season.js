@@ -28,11 +28,11 @@ define(['models/season_data', 'models/common'], function (d, c) {
                             columns: [
                                 {id: 'item', header: '', fillspace: 1, footer: {text: '', colspan: 9}},
                                 {id: 'jinhua', header: '金华', fillspace: 1},
-                                {id: 'lanxi', header: '兰溪', fillspace: 1},
-                                {id: 'dongyang', header: '东阳', fillspace: 1},
                                 {id: 'yiwu', header: '义乌', fillspace: 1},
-                                {id: 'wuyi', header: '武义', fillspace: 1},
+                                {id: 'dongyang', header: '东阳', fillspace: 1},
                                 {id: 'yongkang', header: '永康', fillspace: 1},
+                                {id: 'lanxi', header: '兰溪', fillspace: 1},
+                                {id: 'wuyi', header: '武义', fillspace: 1},
                                 {id: 'pujiang', header: '浦江', fillspace: 1},
                                 {id: 'panan', header: '磐安', fillspace: 1}
                             ],

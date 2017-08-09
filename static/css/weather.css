@@ -21,9 +21,22 @@
 .list .webix_selected{
     background: #65abd6;
 }
-.forecast-t{
-    border-top: none;
+.template_no_bottom{
     border-bottom: none;
+}
+.template_no_top{
+    border-top: none;
+}
+.template_no_left{
+    border-left: none;
+}
+.template_no_right{
+    border-right: none;
+}
+.live_seg{
+    border-top: 1px solid #dfdfdf !important;
+    border-left: 1px solid #dfdfdf !important;
+    padding-left: 5px !important;
 }
 .table .webix_cell:focus{
     outline: none;
@@ -34,9 +47,9 @@
 .table .webix_ss_header table{
     border-left: 1px solid #ddd !important;
 }
-.table .webix_row_select{
+.table .webix_row_select, .table .webix_column_select{
     background: #eee !important;
-    color: #0082d8 !important;
+    color: #666 !important;
 }
 .table td{
     border-right: none;

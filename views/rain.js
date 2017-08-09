@@ -16,20 +16,46 @@ define(['models/rain_data', 'models/common'], function (d, c) {
                 id: 'rain:table',
                 yCount: 3,
                 scroll: false,
-                autoheight: 1,
+                select: 'column',
+                hover: 'none',
                 columns: [
                     {id: 'time', header: '', adjust: 1},
                     {id: 'jinhua', header: '金华', fillspace: 1},
-                    {id: 'pujiang', header: '浦江', fillspace: 1},
-                    {id: 'lanxi', header: '兰溪', fillspace: 1},
                     {id: 'yiwu', header: '义乌', fillspace: 1},
                     {id: 'dongyang', header: '东阳', fillspace: 1},
+                    {id: 'yongkang', header: '永康', fillspace: 1},
+                    {id: 'lanxi', header: '兰溪', fillspace: 1},
                     {id: 'wuyi', header: '武义', fillspace: 1},
-                    {id: 'yongkang', header: '永康', fillspace: 1}
+                    {id: 'pujiang', header: '浦江', fillspace: 1}
                 ],
-                data: []
+                data: [],
+                on: {
+                    'onMouseMoving': function (ev) {
+                        var role = ev.target.getAttribute('role');
+                        if (role !== 'gridcell'){
+                            return;
+                        }
+                        var col = parseInt(ev.target.getAttribute('aria-colindex'));
+                        if (col < 2){
+                            return;
+                        }
+                        var m = {
+                            0: 'jinhua', 1: 'yiwu', 2: 'dongyang', 3: 'yongkang',
+                            4: 'lanxi', 5: 'wuyi', 6: 'pujiang'
+                        };
+                        this.select(m[col-2]);
+                        e.dispatchAction({
+                            type: 'showTip',
+                            dataIndex: col - 2,
+                            seriesIndex: 0
+                        });
+                    },
+                    'onMouseOut': function () {
+                        this.unselectAll();
+                    }
+                }
             },
-            {view: 'template', template: '', css: 'chart', id: 'rain:chart'}
+            {view: 'template', template: '', id: 'rain:chart'}
         ]
     };
     var e = undefined;
@@ -44,13 +70,13 @@ define(['models/rain_data', 'models/common'], function (d, c) {
                 data.json().forEach(function (item) {
                     if (item.hasOwnProperty('pujiang')){
                         $$('rain:table').add(item);
-                        dataForDraw.push([(parseFloat(item['jinhua'].split('%')[0])/100).toFixed(2),
-                            (parseFloat(item['pujiang'].split('%')[0])/100).toFixed(2),
-                            (parseFloat(item['lanxi'].split('%')[0])/100).toFixed(2),
-                            (parseFloat(item['yiwu'].split('%')[0])/100).toFixed(2),
-                            (parseFloat(item['dongyang'].split('%')[0])/100).toFixed(2),
-                            (parseFloat(item['wuyi'].split('%')[0])/100).toFixed(2),
-                            (parseFloat(item['yongkang'].split('%')[0])/100).toFixed(2)]);
+                        dataForDraw.push([(parseFloat(item['jinhua'].split('%')[0])/100),
+                            (parseFloat(item['yiwu'].split('%')[0])/100),
+                            (parseFloat(item['dongyang'].split('%')[0])/100),
+                            (parseFloat(item['yongkang'].split('%')[0])/100),
+                            (parseFloat(item['lanxi'].split('%')[0])/100),
+                            (parseFloat(item['wuyi'].split('%')[0])/100),
+                            (parseFloat(item['pujiang'].split('%')[0])/100)]);
                     }else{
                         $$('rain:label-header').define('data', {t: item['time']});
                         $$('rain:label-header').refresh();
@@ -61,6 +87,14 @@ define(['models/rain_data', 'models/common'], function (d, c) {
                     {data: dataForDraw[1]},{data: dataForDraw[2]}]});
             });
             c.$selectItem('weather:list', 'rain');
+            // e.on('mouseover', function (e) {
+            //     var m = {
+            //         0: 'jinhua', 1: 'yiwu', 2: 'dongyang', 3: 'yongkang',
+            //         4: 'lanxi', 5: 'wuyi', 6: 'pujiang'
+            //     };
+            //     var index = e.dataIndex;
+            //     $$('rain:table').select(m[index]);
+            // });
         },
         $ondestroy: function () {
             if (e){

@@ -19,7 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "webix": "^4.3.0",
+    "webix": "^4.4.0",
     "echarts": "^3.5.4",
     "requirejs": "^2.3.3",
     "webix-jet-core": "^0.1.5",

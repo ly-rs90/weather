@@ -13,19 +13,26 @@ define(function () {
             x2: 40,
             y2: 30
         },
+        backgroundColor: '#fff',
         tooltip: {
-            trigger: 'axis'
-            // axisPointer: {
-            //     type: 'shadow'
-            // }
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
         },
         legend: {
             top: 30,
             data: ['今天白天', '今天夜里', '24小时']
         },
         xAxis: {
+            splitLine: {
+                show: true,
+                lineStyle: {
+                    type: 'dashed'
+                }
+            },
             name: '地区',
-            data: ['金华', '浦江', '兰溪', '义乌', '东阳', '武义', '永康']
+            data: ['金华', '义乌', '东阳', '永康', '兰溪', '武义', '浦江']
         },
         yAxis: {
             min: 0,

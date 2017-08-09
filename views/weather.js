@@ -48,8 +48,8 @@ define(function () {
                             template: "<span class='webix_icon fa-#icon#' style='#s#'></span>&nbsp;<span>#title#</span>"
                         },
                         data: [
+                            {id: 'home', icon: "home", s: 'color: #e20000', title: '首页'},
                             {id: 'live', icon: "cloud", s: 'color: #ffc600', title: '天气实况'},
-                            //{id: 'forecast', icon: "sun-o", s: 'color: #ffc600', title: '天气预报'},
                             {id: 'future', icon: "calendar-plus-o", s: 'color: #0056ee', title: '未来1~9天天气预报'},
                             {id: 'month', icon: "calendar", s: 'color: #e20000', title: '月预报'},
                             {id: 'ten', icon: "calendar-check-o", s: 'color: #ffc600', title: '旬预报'},
