@@ -17,7 +17,7 @@ gulp.task('build-js', function () {
         out: 'app.js',
         insertRequire: ['app'],
         deps: ['app'],
-        include: ['libs/requirejs/require.js'].concat(views)
+        include: ['libs/almond/almond.js'].concat(views)
     }).pipe(uglify()).pipe(gulp.dest('./deploy'));
 });
 

@@ -23,6 +23,7 @@
     "echarts": "^3.5.4",
     "requirejs": "^2.3.3",
     "webix-jet-core": "^0.1.5",
-    "routie": "^0.3.2"
+    "routie": "^0.3.2",
+    "almond": "^0.3.3"
   }
 }
