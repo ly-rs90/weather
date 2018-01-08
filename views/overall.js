@@ -5,22 +5,34 @@ define(['models/overall_data', 'models/common'], function (d, c) {
     var ui = {
         rows: [
             {
-                view: 'template',
-                template: "<div style='color:#333;font-size:20px'>综合指数&nbsp;&nbsp;<span style='font-size: 12px;color: #999'>金华气象台&nbsp;#t#发布的生活指数预报</span></div>",
-                autoheight: 1,
-                data: [{t: '2017/5/19 10:10:21'}]
-            },
-            {
                 view: 'dataview',
-                scroll: false,
-                xCount: 3,
+                scroll: 'y',
+                xCount: 2,
                 type: {
-                    template: "<div style='color:#007acc;font-size:20px'>#index#&nbsp;&nbsp;<span style='font-size:14px;color:#777'>#lev#</span></div>" +
-                        "<div style='color: #333'>#content#</div>",
-                    height: '100',
-                    width: 'auto'
+                    height: '200',
+                    width: 'auto',
+                    template: "<div id='overall_container'>" +
+                    "<div class='overall-pic #pic#'></div>" +
+                    "<div style='padding-right: 0;'>" +
+                        "<div class='item-container'><div>指数类型：</div><div style='color:#0598e3'>#type#</div></div>" +
+                        "<div class='item-container'><div>预报时间：</div><div>#time#</div></div>" +
+                        "<div class='item-container'><div>等级：</div><div style='color:#cc1206'>#lev#</div></div>" +
+                        "<div class='item-container'><div>温馨提示：</div><div>#tips#</div></div>" +
+                    "</div>" +
+                    "</div>"
                 },
-                data: d.$data
+                data: [
+                    {id: 1, type: '洗车指数', pic: 'pic1', time: '2018/1/8 06:00', lev: '四级', tips: '不适宜，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。'},
+                    {id: 2, type: '晾晒指数', pic: 'pic2', time: '2018/1/8 06:00', lev: '一级', tips: '不适宜晾晒。'},
+                    {id: 3, type: '晨练指数', pic: 'pic3', time: '2018/1/8 06:00', lev: '五级', tips: '不适宜晨练，最好不要晨练。'},
+                    {id: 4, type: '穿衣指数', pic: 'pic4', time: '2018/1/8 06:00', lev: '八级', tips: '寒冷，将明显变冷，请你加衣，建议穿毛衣加羽绒服、裘皮。'},
+                    {id: 5, type: '感冒指数', pic: 'pic5', time: '2018/1/8 06:00', lev: '二级', tips: '较易感冒，体质较弱的朋友注意加强自我保护。'},
+                    {id: 6, type: '霉变指数', pic: 'pic6', time: '2018/1/8 06:00', lev: '二级', tips: '霉变指数偏小，空气较干燥，不太容易发生霉变。'},
+                    {id: 7, type: '舒适度指数', pic: 'pic7', time: '2018/1/8 06:00', lev: '负三级', tips: '人体感觉冷，很不舒适，天气冷，要采取保暖措施，抵御严寒。'},
+                    {id: 8, type: '运动指数', pic: 'pic8', time: '2018/1/8 06:00', lev: '一级', tips: '气象条件很差，不适宜户外体育运动，可适当进行户内体育运动，如篮球、网球、乒乓球等。'},
+                    {id: 9, type: '中暑指数', pic: 'pic9', time: '2018/1/8 06:00', lev: '一级', tips: '不会中暑。'},
+                    {id: 10, type: '紫外线指数', pic: 'pic10', time: '2018/1/8 06:00', lev: '一级', tips: '紫外线辐射很弱，不需要防护。'}
+                ]
             }
         ]
     };

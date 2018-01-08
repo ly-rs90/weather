@@ -56,8 +56,9 @@ define(function () {
                             {id: 'trend', icon: "calendar-times-o", s: 'color: #0056ee', title: '长期趋势预报'},
                             {id: 'week', icon: "calendar-minus-o", s: 'color: #e20000', title: '一周天气趋势'},
                             {id: 'season', icon: "star", s: 'color: #ffc600', title: '重要季节长期预报'},
-                            {id: 'rain', icon: "cloud-download", s: 'color: #e20000', title: '降水概率'}
-                            //{id: 'overall', icon: "thermometer", s: 'color: #ffc600', title: '综合指数'}
+                            {id: 'rain', icon: "cloud-download", s: 'color: #e20000', title: '降水概率'},
+                            {id: 'overall', icon: "blind", s: 'color: #ffc600', title: '生活气象指数'},
+                            {id: 'commute', icon: "bus", s: 'color: #0056ee', title: '上下班天气'}
                         ],
                         click: function (id) {
                             this.getTopParentView().$scope.show('./' + id);
@@ -80,7 +81,7 @@ define(function () {
             var link = $$('weather:download');
             var user = navigator.userAgent;
             var index = user.indexOf('MSIE');
-            if (index != -1){
+            if (index !== -1){
                 warn.show();
             }
         }

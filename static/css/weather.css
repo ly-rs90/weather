@@ -94,3 +94,100 @@
     text-indent: 2em;
     word-wrap: break-word;
 }
+#overall_container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 14px !important;
+    line-height: 24px !important;
+    padding-top: 7px;
+}
+.overall-pic{
+    border: 1px solid #ddd;
+    min-width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+.pic1{
+    background: url(/static/images/小汽车.png) no-repeat;
+    background-size: contain;
+}
+.pic2{
+    background: url(/static/images/衣架.png) no-repeat;
+    background-size: contain;
+}
+.pic3{
+    background: url(/static/images/晨练.png) no-repeat;
+    background-size: contain;
+}
+.pic4{
+    background: url(/static/images/衣服.png) no-repeat;
+    background-size: contain;
+}
+.pic5{
+    background: url(/static/images/感冒.png) no-repeat;
+    background-size: contain;
+}
+.pic6{
+    background: url(/static/images/水果.png) no-repeat;
+    background-size: contain;
+}
+.pic7{
+    background: url(/static/images/地球1.png) no-repeat;
+    background-size: contain;
+}
+.pic8{
+    background: url(/static/images/足球.png) no-repeat;
+    background-size: contain;
+}
+.pic9{
+    background: url(/static/images/太阳.png) no-repeat;
+    background-size: contain;
+}
+.pic10{
+    background: url(/static/images/太阳伞.png) no-repeat;
+    background-size: contain;
+}
+.item-container{
+    display: flex;
+}
+.item-container div:first-child{
+    width: 75px;
+    text-align: right;
+}
+.item-container div:last-child{
+    flex: 1;
+    word-break: break-all;
+}
+#commute_container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+#commute_container > div{
+    width: 1000px;
+}
+#commute_container > div:first-child{
+    text-align: center;
+}
+#commute_container > div:first-child  > img{
+    max-height: 100%;
+}
+#commute_container > div:nth-child(2){
+    flex: 1;
+    background: #D7effE;
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#commute_container > div:nth-child(2) > div{
+    margin-bottom: 20px;
+}
+#commute_container > div:nth-child(3){
+    height: 100px;
+    background: #D7eeEE;
+}
