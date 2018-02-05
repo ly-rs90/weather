@@ -44,11 +44,15 @@ define(function () {
     };
     var option = {
         title: {
-            text: '金华市各地区天气实况'
+            text: '金华市各地区天气实况',
+            textStyle: {
+                color: '#1280ec'
+            }
         },
         tooltip: {
             trigger: 'item'
         },
+        backgroundColor: 'rgba(108,175,204,.2)',
         // graphic: (function () {
         //     var graphics = [];
         //     graphics.push(g);

@@ -11,6 +11,7 @@ from server.handlers.month import Month
 from server.handlers.future import Future
 from server.handlers.trend import Trend
 from server.handlers.season import Season
+from server.handlers.overall import OverAll
 
 define('port', default=80, help='server run on the given port.', type=int)
 
@@ -27,6 +28,7 @@ class Weather(Application):
             (r'/future', Future),
             (r'/trend', Trend),
             (r'/season', Season),
+            (r'/overall', OverAll),
             (r'/(.*)', StaticFileHandler, {'path': file_root, 'default_filename': 'index.html'})
         ]
         settings = dict(

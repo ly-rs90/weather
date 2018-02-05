@@ -19,7 +19,8 @@ define(function () {
             data: ['0点', '2点', '4点', '6点', '8点', '10点', '12点', '14点', '16点', '18点', '20点', '22点', '24点']
         },
         yAxis: {
-            name: '摄氏度(℃)'
+            name: '摄氏度(℃)',
+            scale: true
         },
         series: [
             {
@@ -55,7 +56,8 @@ define(function () {
             data: ['0点', '2点', '4点', '6点', '8点', '10点', '12点', '14点', '16点', '18点', '20点', '22点', '24点']
         },
         yAxis: {
-            name: '风速(m/s)'
+            name: '风速(m/s)',
+            scale: true
         },
         series: [
             {
@@ -91,7 +93,8 @@ define(function () {
             data: ['0点', '2点', '4点', '6点', '8点', '10点', '12点', '14点', '16点', '18点', '20点', '22点', '24点']
         },
         yAxis: {
-            name: 'PM(ug/m³)'
+            name: 'PM(ug/m³)',
+            scale: true
         },
         series: [
             {
@@ -111,9 +114,46 @@ define(function () {
             }
         ]
     };
+    var option_map = {
+        grid: {
+            x: 10,
+            y: 10,
+            x2: 10,
+            y2: 10
+        },
+        series: [
+            {
+                type: 'map',
+                map: 'jinhua',
+                aspectScale: 1,
+
+                label: {
+                    normal: {
+                        show: true
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        areaColor: '#81c4ec'
+                    },
+                    emphasis: {
+                        areaColor: '#1ccc75',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 0,
+                        shadowBlur: 20,
+                        shadowColor: 'rgba(0,0,0,0.5)'
+                    }
+                }
+            }
+        ]
+    };
     return {
         $option_temp: option_temp,
         $option_wind: option_wind,
-        $option_pm: option_pm
+        $option_pm: option_pm,
+        $option_map: option_map
     };
 });
