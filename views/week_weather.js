@@ -1,10 +1,10 @@
-define(['models/common'], function (c) {
+define(['models/common', 'models/week_weather_data'], function (c, d) {
     var ui = {
         rows: [
             {height: 2},
             {
-                view: 'template', scroll: 'y', id: '48h_weather', css: 'weather-48h',
-                template: "<p class='h-week'>一周天气预报</p><div style='padding-left: 5px'>#content#</div><p class='h-week'>金华各县市区一周天气预报</p><div id='week_weather_container'>" +
+                view: 'template', scroll: 'y', id: 'week_weather', css: 'weather-48h',
+                template: "<p class='h-week'>一周天气预报</p><div style='padding-left: 5px;min-height: 300px'>#content#</div><p class='h-week'>金华各县市区一周天气预报</p><div id='week_weather_container'>" +
                     "<table class='table-week'>" +
                         "<thead>" +
                             "<tr><td colspan='7'>浦江县[2018年01月24日06时发布]</td></tr>" +
@@ -160,19 +160,7 @@ define(['models/common'], function (c) {
                     "</table>" +
                 "</div>",
                 data: [{
-                    content: "<p>金华市气象台2018年01月23日10时发布的一周趋势预报：</p>" +
-                        "<p>---------------------------------------------------------------------</p>" +
-                        "<p>天气趋势预报：预计未来七天冷空气和暖湿气流均较活跃，多阴雨天气，气温下降，其中24日夜里起多低温雨雪天气。</p>" +
-                        "<p>具体分日预报：</p>" +
-                        "<p>01月24日（星期三）：白天阴有时有小雨，夜里阴有雨，北部山区有雨夹雪，温度4～7℃，偏东风2～3级</p>" +
-                        "<p>01月25日（星期四）：白天阴有时有小雨，夜里转雨夹雪或雪，山区有雪，雨雪量中等，温度4～7℃，偏东风2～3级</p>" +
-                        "<p>01月26日（星期五）：阴有中到大雪，山区有大到暴雪，温度1～3℃，偏东风1～2级</p>" +
-                        "<p>01月27日（星期六）：阴有小到中雨，温度2～4℃，偏东风1～2级</p>" +
-                        "<p>01月28日（星期天）：白天阴有小到中雨，夜里转小雨夹雪或雪，温度2～4℃，偏东风2～3级</p>" +
-                        "<p>01月29日（星期一）：雨雪止转阴到多云，温度0～4℃，偏东风2～3级</p>" +
-                        "<p>01月30日（星期二）：多云到晴，温度-2～4℃，偏东风1～2级</p>" +
-                        "<p>---------------------------------------------------------------------</p>" +
-                        "<p>预报：徐亚钦 签发：张行才</p>"
+                    content: ""
                 }]
             }
         ]
@@ -182,6 +170,10 @@ define(['models/common'], function (c) {
         $oninit: function (v) {
             v.adjust();
             c.$selectItem('weather:list', 'week_weather');
+            d.$getWeek().then(function (value) {
+                var v = value.json();
+                $$('week_weather').define('data', [{content: v.all}]);
+            });
         }
     };
 });

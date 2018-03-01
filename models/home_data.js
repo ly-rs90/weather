@@ -128,16 +128,20 @@ define(function () {
                     {name: '温度', value: '22~31℃', x: '25%', y: '55%'}, // 婺城区
                     {name: '温度', value: '23~32℃', x: '35%', y: '70%'}, // 武义县
                     {name: '温度', value: '21~33℃', x: '45%', y: '16%'}, // 浦江县
-                    {name: '温度', value: '24~34℃', x: '41%', y: '45%'}, // 金东区
+                    {name: '温度', value: '24~34℃', x: '41%', y: '42%'}, // 金东区
                     {name: '温度', value: '25~36℃', x: '50%', y: '38%'}, // 义乌市
                     {name: '温度', value: '23~31℃', x: '53%', y: '55%'}, // 永康市
-                    {name: '温度', value: '22~30℃', x: '66%', y: '40%'}, // 东阳市
-                    {name: '温度', value: '20~32℃', x: '75%', y: '56%'}  // 磐安县
+                    {name: '温度', value: '22~30℃', x: '66%', y: '42%'}, // 东阳市
+                    {name: '温度', value: '20~32℃', x: '75%', y: '58%'}  // 磐安县
                 ]
             }
         }]
     };
+    function getHome() {
+        return webix.ajax().post('/home');
+    }
     return {
-        $option: option
+        $option: option,
+        $getHome: getHome
     };
 });

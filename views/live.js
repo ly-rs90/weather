@@ -89,7 +89,7 @@ define(['models/live_data', 'models/common'], function (d, c) {
                                         }
                                     },
                                     {
-                                        template: '最新整点实况气温：3.8℃&nbsp;最高：3.9℃&nbsp;最低：1.5℃', height: 39, borderless: 1
+                                        template: '最新整点实况气温：<span style="color:#cc260b">3.8℃</span>&nbsp;&nbsp;最高：<span style="color:#cc260b">3.9℃</span>&nbsp;&nbsp;最低：<span style="color:#cc260b">1.5℃</span>', height: 39, borderless: 1
                                     }
                                 ]
                             }
@@ -133,6 +133,7 @@ define(['models/live_data', 'models/common'], function (d, c) {
                 e_map.dispose();
                 e_map = undefined;
             }
+            window.onresize = null;
         }
     };
 });

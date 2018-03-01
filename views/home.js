@@ -72,6 +72,11 @@ define(['models/home_data', 'models/common'], function (d, c) {
                     temp2.innerHTML = '';
                 }
             };
+
+            d.$getHome().then(function (value) {
+                var v = value.json();
+                $$('home:weather-3').define('data', [{content: v.all}]);
+            });
         },
         $ondestroy: function () {
             if (e){

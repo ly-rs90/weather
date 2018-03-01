@@ -95,12 +95,16 @@ define(['models/rain_data', 'models/common'], function (d, c) {
             //     var index = e.dataIndex;
             //     $$('rain:table').select(m[index]);
             // });
+            window.onresize = function () {
+                e.resize();
+            };
         },
         $ondestroy: function () {
             if (e){
                 e.dispose();
                 e = undefined;
             }
+            window.onresize = null;
         }
     };
 });

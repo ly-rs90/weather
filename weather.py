@@ -12,6 +12,10 @@ from server.handlers.future import Future
 from server.handlers.trend import Trend
 from server.handlers.season import Season
 from server.handlers.overall import OverAll
+from server.handlers.weather3 import Weather3
+from server.handlers.home import Home
+from server.handlers.rain_chart import RainChart
+from server.handlers.week_weather import WeekWeather
 
 define('port', default=80, help='server run on the given port.', type=int)
 
@@ -29,6 +33,10 @@ class Weather(Application):
             (r'/trend', Trend),
             (r'/season', Season),
             (r'/overall', OverAll),
+            (r'/three_weather', Weather3),
+            (r'/home', Home),
+            (r'/rain_chart', RainChart),
+            (r'/week_weather', WeekWeather),
             (r'/(.*)', StaticFileHandler, {'path': file_root, 'default_filename': 'index.html'})
         ]
         settings = dict(
@@ -43,6 +51,7 @@ def main():
     w = Weather()
     w.listen(options.port)
     IOLoop.current().start()
+
 
 if __name__ == '__main__':
     main()

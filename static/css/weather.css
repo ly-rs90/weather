@@ -2,7 +2,7 @@
     background: #eee;
 }
 .white-bg{
-    background: #fff;
+    background: #fff !important;
 }
 .logo button{
     border: none;
@@ -376,6 +376,62 @@
     border-bottom: none;
     border-right: none;
 }
+.overall-seg{
+    border-left: 1px solid #ddd !important;
+}
+.media-btn button{
+    line-height: 38px !important;
+    text-align: center;
+    background: rgba(0,0,0,.07);
+}
+.media-btn span{
+    font-size: 25px;
+    color: #0d6df2;
+}
+.table-one-week{
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    text-align: center;
+    border: 1px solid #80abcc;
+}
+.table-one-week thead{
+    background: #a4c4ff;
+    color: #fff;
+}
+.table-one-week thead tr td{
+    border-right: 1px solid #80abcc;
+    border-bottom: 1px solid #80abcc;
+}
+.table-one-week thead tr td:first-child{
+    width: 120px;
+}
+.table-one-week thead tr td:last-child{
+    border-right: none;
+}
+.table-one-week tbody tr td{
+    border-right: 1px solid #80abcc;
+    border-bottom: 1px solid #80abcc;
+}
+.table-one-week tbody tr:last-child td{
+    border-bottom: none
+}
+.table-one-week tbody tr td:last-child{
+    border-right: none;
+}
+.table-one-week tbody tr:first-child td{
+    min-height: 34px;
+}
+.table-one-week tbody tr:first-child td img{
+    vertical-align: center;
+}
+.table-one-week tbody tr:nth-child(2n) td{
+    background: #f3f3f3;
+}
+.webix_item_tab:focus{
+    outline: none !important;
+}
+
 
 @media screen and (max-width: 1911px){
     #week_weather_container{

@@ -1,4 +1,4 @@
-define(['models/common'], function (c) {
+define(['models/common', 'models/3h_weather_data'], function (c, data) {
     var ui = {
         rows: [
             {height: 2},
@@ -6,7 +6,7 @@ define(['models/common'], function (c) {
                 id: '3h_weather',
                 scroll: 'y',
                 css: 'weather-3h',
-                template: "<p class='h-3'>3小时天气预报</p><div style='padding-left:5px'>#content#</div><p class='h-3'>金华各县市区3小时天气预报</p><div id='weather_container'>" +
+                template: "<p class='h-3'>3小时天气预报</p><div style='padding-left:5px;min-height: 200px'>#content#</div><p class='h-3'>金华各县市区3小时天气预报</p><div id='weather_container'>" +
                 "<table class='weather-table'>" +
                 "<thead><tr><td colspan='4'>浦江</td></tr></thead>" +
                 "<tbody>" +
@@ -72,13 +72,7 @@ define(['models/common'], function (c) {
                 "</table>" +
                 "</div>",
                 data: [{
-                    content: "<p>金华市气象台2018年01月23日17时发布的未来三小时天气预报</p>" +
-                        "<p>---------------------------------------------------------------------</p>" +
-                        "<p>天气预报：阴天；</p>" +
-                        "<p>风的预报：偏东风1～2级；</p>" +
-                        "<p>气温预报：温度8～7℃</p>" +
-                        "<p>---------------------------------------------------------------------</p>" +
-                        "<p>预报员代号：41号</p>"
+                    content: ""
                 }]
             }
         ]
@@ -92,6 +86,13 @@ define(['models/common'], function (c) {
                 $$('3h_weather').adjust();
                 $$('3h_weather').resize();
             };
+            data.$getThreeWeather().then(function (value) {
+                var v = value.json();
+                $$('3h_weather').define('data', [{content: v.all}]);
+            });
+        },
+        $ondestroy: function () {
+            window.onresize = null;
         }
     };
 });

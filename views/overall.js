@@ -9,7 +9,7 @@ define(['models/overall_data', 'models/common'], function (d, c) {
             {
                 cols: [
                     {
-                        view: 'segmented', value: 1, width: 200, css: 'white-bg',
+                        view: 'segmented', value: 1, width: 200, css: 'white-bg overall-seg',
                         options: [
                             {id: 1, value: '今天'},
                             {id: 2, value: '明天'}
@@ -30,6 +30,7 @@ define(['models/overall_data', 'models/common'], function (d, c) {
                     {css: 'white-bg'}
                 ]
             },
+            {height: 2},
             {
                 view: 'dataview',
                 scroll: 'y',
