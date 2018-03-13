@@ -46,7 +46,7 @@ define(function () {
         title: {
             text: '金华市各地区天气实况',
             textStyle: {
-                color: '#1280ec'
+                color: '#008fcc'
             }
         },
         tooltip: {
